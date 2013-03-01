@@ -19,6 +19,7 @@ class MyAuth_Create_Users {
 		    $table->string('lastname');
 		    $table->string('city');
 		    $table->string('country');
+		    $table->string('profession');
 		    $table->timestamps();   
 		});
 	}

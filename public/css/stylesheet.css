@@ -1,3 +1,8 @@
+/* Changes by developer Roberto C. */
+.submain .widget-fluid h6 { padding: 0 10px; }
+
+
+
  Defaults */
     .TAL{text-align: left !important;} .TAR{text-align: right !important;} .TAC{text-align: center !important;}
     .FL{float: left;} .FR{float: right;}

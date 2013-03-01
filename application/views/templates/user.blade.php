@@ -136,17 +136,62 @@
                     <a href="{{url('logout')}}"><span class="icon-off"></span> Log Off</a>
                 </div>  
 
-                <div class="widget-fluid userInfo clearfix">
-                    <div class="image">
-                        <img src="<?php echo url('profile/'.Auth::user()->username.'.jpg'); ?>" class="img-polaroid"/>
-                    </div>              
-                    <div class="name">Welcome {{Auth::user()->firstname}}</div>
-                    <div class="text">
-                        Welcom back! Your last visit: 24.10.2012 in 19:55
+                <div class="widget-fluid" style="margin-bottom: 30px;">
+                    <table cellpadding="0" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Recent Interactions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="#">Dave</a> followed You - <small>Jan. 16th, 2013</small></td>
+                            </tr>
+                            <tr>
+                                <td>New <a href="#">Pin</a> - <small>Jan. 10th, 2013</small></td>
+                            </tr>
+                            <tr>
+                                <td>You followed <a href="#">John</a> - <small>Jan. 16th, 2013</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="widget-fluid">
+                    <h6>New Members in Your Sector</h6>
+                    <div class="userCard">
+                        <div class="image">
+                            <img src="{{url('img/examples/users/alexey.jpg')}}" class="img-polaroid"/>
+                        </div>
+                        <div class="info">
+                            <h3>Alexey</h3>
+                            <p><span class="icon-heart"></span> 2,195 <span class="icon-camera"></span> 121</p>
+                            <button class="btn btn-danger">Unfollow</button>
+                            <div class="informer">
+                                6,422
+                                <span>Followers</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="userCard">
+                        <div class="image">
+                            <img src="{{url('img/examples/users/olga.jpg')}}" class="img-polaroid"/>
+                        </div>
+                        <div class="info">
+                            <h3>Olga</h3>
+                            <p><span class="icon-heart"></span> 3,521 <span class="icon-camera"></span> 89</p>
+                            <button class="btn btn-danger">Unfollow</button>
+                            <div class="informer">
+                                7,327
+                                <span>Followers</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="dr"><span></span></div>
+
             </div>
+
+
         </div>
         
         @yield_section

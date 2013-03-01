@@ -1,7 +1,7 @@
 @layout('templates.user')
 
 @section('content')
-{{ Form::open('users/settings') }}
+
 <div class="row-fluid">
     <div class="span8">                
         <div class="widget">
@@ -10,6 +10,7 @@
                 <h2>Your Profile Settings</h2>
             </div>                        
             <div class="block-fluid">
+                {{ Form::open('users/settings') }}
                 @if (Session::has('error'))
                     <div class="alert alert-error">{{ Session::get('error') }}</div>
                 @elseif (Session::has('success'))
@@ -19,22 +20,32 @@
                 <div class="row-form">
                     <div class="span2">First Name:</div>
                     <div class="span10">{{ Form::text('firstname', Auth::user()->firstname) }}</div>
+                    <?php if($errors) echo '<p class="text-error" style="font-size:12px;">'.$errors->first('firstname').'</p>'; ?>
                 </div>
                 <div class="row-form">
                     <div class="span2">Last Name:</div>
                     <div class="span10">{{ Form::text('lastname', Auth::user()->lastname) }}</div>
+                    <?php if($errors) echo '<p class="text-error" style="font-size:12px;">'.$errors->first('lastname').'</p>'; ?>
                 </div>
                 <div class="row-form">
                     <div class="span2">City:</div>
                     <div class="span10">{{ Form::text('city', Auth::user()->city) }}</div>
+                    <?php if($errors) echo '<p class="text-error" style="font-size:12px;">'.$errors->first('city').'</p>'; ?>
                 </div>
                 <div class="row-form">
                     <div class="span2">Country:</div>
                     <div class="span10">{{ Form::text('country', Auth::user()->country) }}</div>
+                    <?php if($errors) echo '<p class="text-error" style="font-size:12px;">'.$errors->first('country').'</p>'; ?>
+                </div>
+                <div class="row-form">
+                    <div class="span2">Profession:</div>
+                    <div class="span10">{{ Form::text('profession', Auth::user()->profession) }}</div>
+                    <?php if($errors) echo '<p class="text-error" style="font-size:12px;">'.$errors->first('profession').'</p>'; ?>
                 </div>
                 <div class="toolbar bottom TAL">
                     {{ Form::submit('Submit', array('class' => 'btn btn-primary')) }}
                 </div>
+                {{ Form::close() }}
             </div>
         </div>
     </div>
@@ -61,6 +72,6 @@
         </div>
     </div>
 </div>
-{{ Form::close() }}
+
 
 @endsection
