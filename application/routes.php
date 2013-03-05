@@ -40,6 +40,7 @@ Route::get('/', function()
 });
 
 Route::controller('users');
+Route::controller('friends');
 
 Route::get('users', array('before' => 'auth', 'do' => function() {
     return Redirect::to('users/index');

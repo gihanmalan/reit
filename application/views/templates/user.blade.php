@@ -117,7 +117,7 @@
     
     <div class="navigation">
         <ul class="main">
-            <li><a href="{{url('users')}}" class="{{ URI::is('users/*') ? 'active' : '' }}"><span class="icom-user1"></span><span class="text">Profile</span></a></li>
+            <li><a href="{{url('users')}}" class="{{ URI::is('users/*') || URI::is('friends/*') ? 'active' : '' }}"><span class="icom-user1"></span><span class="text">Profile</span></a></li>
             <li><a href="{{url('users')}}" class="{{ URI::is('rank') ? 'active' : '' }}"><span class="icom-list"></span><span class="text">Rank</span></a></li>
             <li><a href="{{url('users')}}" class="{{ URI::is('myreit') ? 'active' : '' }}"><span class="icom-stats-up"></span><span class="text">MyREIT</span></a></li>
             <li><a href="{{url('users')}}" class="{{ URI::is('interact') ? 'active' : '' }}"><span class="icom-mail"></span><span class="text">Interact</span></a></li>
@@ -133,7 +133,7 @@
                     <a href="{{url('users/index')}}"><span class="icon-user"></span> Your Profile</a>
                     <a href="buttons.html"><span class="icon-th-list"></span> News Feed</a>
                     <a href="{{url('users/settings')}}"><span class="icon-cog"></span> Settings</a>                    
-                    <a href="{{url('logout')}}"><span class="icon-off"></span> Log Off</a>
+                    <a href="{{url('friends/index')}}"><span class="icosg-users"></span> Friends</a>
                 </div>  
 
                 <div class="widget-fluid" style="margin-bottom: 30px;">

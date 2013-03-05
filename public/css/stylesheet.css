@@ -470,7 +470,7 @@
             }
         .userCard .image{float: left; margin-right: 10px;}
         .userCard .info{display: inline;}
-            .userCard .info h3{font-size: 13px; line-height: 16px; color: #3c4e66; margin: 0px; padding: 0px; text-shadow: 1px 1px 0px #FFF;}
+            .userCard .info h3{font-size: 13px; line-height: 16px; color: #3c4e66; margin: 0 0 5px 0; padding: 0px; text-shadow: 1px 1px 0px #FFF;}
             .userCard .info p{margin-bottom: 0px; opacity: 0.8; filter: alpha(opacity=80); text-shadow: 1px 1px 0px #FFF;}
                 .userCard .info p span{margin: 0px;}
             .userCard .info button{padding: 3px 5px; line-height: 13px; margin-top: 2px;}

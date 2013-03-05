@@ -24,18 +24,39 @@ class Users_Controller extends Base_Controller {
 		$statuses = Status::where('user_id', '=', Auth::user()->id)->get();
 		$blogs = Blog::where('user_id', '=', Auth::user()->id)->get();
 
+		//get number of blog posts
+		$blog_count = count($blogs);
+
+		//get number of followers
+		$followers = Friends::where('following', '=', Auth::user()->id)->get();
+		$follower_count = count($followers);
+
+		//get number of users you are following
+		$following = Friends::where('user_id', '=', Auth::user()->id)->get();
+		$following_count = count($following);
+
 		//merge blogs and statuses
-		$posts = array_merge($statuses, $blogs);
+		if (!empty($statuses) || !empty($blogs))
+		{
+			$posts = array_merge($statuses, $blogs);
 
-		//sort posts by date
-		foreach ($posts as $key => $row) {
-		    $date[$key] = $row->created_at;
+			//sort posts by date
+			foreach ($posts as $key => $row) {
+			    $date[$key] = $row->created_at;
+			}
+
+			array_multisort($date, SORT_DESC, $posts);
 		}
-
-		array_multisort($date, SORT_DESC, $posts);
+		else
+		{
+			$posts = array();
+		}
 
 		return View::make('users.dashboard')
 					->with('title', 'Dashboard')
+					->with('follower_count', $follower_count)
+					->with('following_count', $following_count)
+					->with('blog_count', $blog_count)
 					->with('posts', $posts);
 	}
 
@@ -58,8 +79,6 @@ class Users_Controller extends Base_Controller {
 
 	public function get_blog_post($id)
 	{
-		xdebug_break();
-
 		$blog = Blog::find($id);
 
 		return View::make('users.blog_post')

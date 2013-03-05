@@ -2,13 +2,20 @@
 
 @section('content')
 
+@if (Auth::user()->firstname == '' && Auth::user()->lastname == '' && Auth::user()->city == '' && Auth::user()->country == '' && Auth::user()->profession == '')
+    <div class="alert alert-success">Looks like you have not updated your profile! Click Settings on the left to add your profile information before you book a session.</div>
+@endif
+
 <div class="row-fluid">
-            
     <div class="span4">
         <div class="widget">
             <div class="profile clearfix">
                 <div class="image">
+                    @if (File::exists(path('public') . '/profile/' . Auth::user()->username . '.jpg'))
                     <img src="<?php echo url('profile/'.Auth::user()->username.'_b.jpg'); ?>" class="img-polaroid"/>
+                    @else
+                    <img src="<?php echo url('profile/user.jpg'); ?>" class="img-polaroid">
+                    @endif
                 </div>                        
                 <div class="info">
                     <h2>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h2>
@@ -19,7 +26,7 @@
                 </div>
                 <div class="stats">
                     <div class="item">
-                        <div class="title">12</div>
+                        <div class="title">{{$blog_count}}</div>
                         <div class="descr">Blog Posts</div>                                
                     </div>                            
                     <div class="item">
@@ -27,11 +34,11 @@
                         <div class="descr">Pins</div>                                
                     </div>                                                        
                     <div class="item">
-                        <div class="title">45</div>
+                        <div class="title">{{$follower_count}}</div>
                         <div class="descr">Followers</div>
                     </div>
                     <div class="item">
-                        <div class="title">14</div>
+                        <div class="title">{{$following_count}}</div>
                         <div class="descr">Following</div>                                
                     </div>                            
                 </div>
@@ -96,7 +103,7 @@
                     <div class="arrow"></div>
                     <div class="head">Added new blog post:</div>
                     <div class="text">
-                        <h5>{{$post->title}}</h5>
+                        <h5><a href="{{url('users/blog_post/' . $post->id)}}">{{$post->title}}</a></h5>
                         {{substr(nl2br($post->post), 0, 300)}}...<a href="{{url('users/blog_post/' . $post->id)}}">read more</a>
                     </div>
                 </div>
